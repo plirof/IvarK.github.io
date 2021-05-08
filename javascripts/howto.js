@@ -29,9 +29,10 @@ function get_save(name) {
 }
 
 function load_game() {
-    var save_data = get_save('dimensionSave');
+    const save_data = get_save('dimensionSave');
     if (!save_data) return;
-	player = save_data;
+    const save_to_use = save_data.saves[save_data.current]
+    player = save_to_use;
 }
 
 function showspoilers() {
@@ -87,6 +88,9 @@ function updateSpoilers() {
 			if (i === 17 && (player.replicanti.unl || player.eternities >= 1)) {
 				(displayed === 0) ? displayed = 1 : displayed = 0;
 			}
+			if (i === 18 && player.eternities >= 1) { 
+				(displayed === 0) ? displayed = 1 : displayed = 0; 
+			} 
 			if (i < 5 || i === 7) {
 				(displayed === 0) ? displayed = 1 : displayed = 0;
 			}
